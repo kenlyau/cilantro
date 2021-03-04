@@ -50,24 +50,5 @@ func main() {
 		fmt.Print(err)
 	}
 	fmt.Printf("create ecs instance success, [%s] \n", ecsInstance.ID)
-	// createInstanceArgs := ecs.CreateInstanceArgs{
-	// 	RegionId:                REGION_ID,
-	// 	InstanceType:            INSTANCE_TYPE,
-	// 	ImageId:                 IMAGE_ID,
-	// 	SecurityGroupId:         SECURITY_GROUP_ID,
-	// 	VSwitchId:               V_SWITCH_ID,
-	// 	Password:                PASSWORD,
-	// 	InstanceChargeType:      "PostPaid",
-	// 	SpotStrategy:            "SpotAsPriceGo",
-	// 	InternetMaxBandwidthOut: 5,
-	// 	InternetChargeType:      "PayByTraffic",
-	// }
-	// runInstanceArgs := &ecs.RunInstanceArgs{
-	// 	CreateInstanceArgs: createInstanceArgs,
-	// 	MaxAmount:          1,
-	// }
-	// ins, err := client.RunInstances(runInstanceArgs)
-	// if err != nil {
-	// 	fmt.Print(err)
-	// }
+
 }
