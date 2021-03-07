@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"strconv"
+	"time"
 
 	"github.com/manifoldco/promptui"
 )
@@ -16,10 +17,10 @@ func ExecuteCreateInstance() {
 		}
 		return nil
 	}
-	vpcPrompt := promptui.Prompt{
-		Label: "vpc id",
+	vSwitchPrompt := promptui.Prompt{
+		Label: "vswitch id",
 	}
-	vpcID, err := vpcPrompt.Run()
+	vSwitchID, err := vSwitchPrompt.Run()
 	if err != nil {
 		fmt.Printf("Prompt failed %v\n", err)
 	}
@@ -37,8 +38,18 @@ func ExecuteCreateInstance() {
 	}
 	duration, err := durationPrompt.Run()
 	if err != nil {
-		fmt.Printf("Prompt failed %v\n", err)
+		fmt.Printf("duration failed %v\n", err)
 	}
-	fmt.Println(vpcID, securityGroupID, duration)
+
+	durationTime, err := time.ParseDuration(duration + "h")
+	if err != nil {
+		fmt.Printf("duration failed %v\n", err)
+	}
+	releaseTime := time.Now().Add(durationTime).UTC().Format(time.RFC3339)
+	fmt.Println(vSwitchID, securityGroupID, releaseTime)
+	_, err = client.CreateInstance("ecs.g5.large", vSwitchID, securityGroupID, releaseTime)
+	if err != nil {
+		fmt.Printf("create instance failed %v\n", err)
+	}
 	Select()
 }
