@@ -1,9 +1,10 @@
-module kenlyau.com/cilantro
+module github.com/kenlyau/cilantro
 
-go 1.13
+go 1.15
 
 require (
-	github.com/alibabacloud-go/ecs-20140526 v1.2.0
-	github.com/denverdino/aliyungo v0.0.0-20210222084345-ddfe3452f5e8
+	github.com/aliyun/alibaba-cloud-sdk-go v1.61.973
+	github.com/manifoldco/promptui v0.8.0
+	github.com/spf13/cobra v1.1.3
 	github.com/spf13/viper v1.7.1
 )
